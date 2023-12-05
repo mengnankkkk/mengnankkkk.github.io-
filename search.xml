@@ -204,31 +204,6 @@
     
     
     <entry>
-      <title>web day3</title>
-      <link href="/2023/11/20/day4/"/>
-      <url>/2023/11/20/day4/</url>
-      
-        <content type="html"><![CDATA[<h1 id="web基础知识"><a href="#web基础知识" class="headerlink" title="web基础知识"></a>web基础知识</h1><h2 id="php文件有以下几种备份的格式"><a href="#php文件有以下几种备份的格式" class="headerlink" title="php文件有以下几种备份的格式:"></a>php文件有以下几种备份的格式:</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git .svn .swp .bak .bash-history</span><br></pre></td></tr></table></figure><p>类如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php.git</span><br></pre></td></tr></table></figure><h2 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h2><p>robots协议规定了哪些东西可以抓取，哪些东西不能够抓取。robots.txt是一个文本文件也是一个协议。其可以在搜索引擎中访问网站中要查看的第一个文件。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie是主机访问web服务器由服务器创建的，将信息储存在用户计算机上的文件，一般用户习惯使用cookies</p><p>cookie的使用：</p><p>1..判断用户是否已经登录网站</p><p>2.购物车网站用户跳转保存在其中的数据</p><p>3.等等等</p><h2 id="php对于文件的读取"><a href="#php对于文件的读取" class="headerlink" title="php对于文件的读取"></a>php对于文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure><h3 id="组成解析"><a href="#组成解析" class="headerlink" title="组成解析"></a>组成解析</h3><p>1.php:&#x2F;&#x2F;filter&#x2F;可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p><p>2.read&#x3D;convert.base64-encode&#x2F;resource将数据转换为base64编码来读取数据</p><p>3.&#x3D;index.php读取的文件</p><h3 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h3><p>读取上级目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=.../.../a.txt</span><br></pre></td></tr></table></figure><p>读取其他的目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=F：\b.txt</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> web basic </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> basic </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>web day2</title>
       <link href="/2023/11/20/day3/"/>
       <url>/2023/11/20/day3/</url>
@@ -271,6 +246,31 @@
         <tags>
             
             <tag> php </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web day3</title>
+      <link href="/2023/11/20/day4/"/>
+      <url>/2023/11/20/day4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="web基础知识"><a href="#web基础知识" class="headerlink" title="web基础知识"></a>web基础知识</h1><h2 id="php文件有以下几种备份的格式"><a href="#php文件有以下几种备份的格式" class="headerlink" title="php文件有以下几种备份的格式:"></a>php文件有以下几种备份的格式:</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git .svn .swp .bak .bash-history</span><br></pre></td></tr></table></figure><p>类如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php.git</span><br></pre></td></tr></table></figure><h2 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h2><p>robots协议规定了哪些东西可以抓取，哪些东西不能够抓取。robots.txt是一个文本文件也是一个协议。其可以在搜索引擎中访问网站中要查看的第一个文件。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie是主机访问web服务器由服务器创建的，将信息储存在用户计算机上的文件，一般用户习惯使用cookies</p><p>cookie的使用：</p><p>1..判断用户是否已经登录网站</p><p>2.购物车网站用户跳转保存在其中的数据</p><p>3.等等等</p><h2 id="php对于文件的读取"><a href="#php对于文件的读取" class="headerlink" title="php对于文件的读取"></a>php对于文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure><h3 id="组成解析"><a href="#组成解析" class="headerlink" title="组成解析"></a>组成解析</h3><p>1.php:&#x2F;&#x2F;filter&#x2F;可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p><p>2.read&#x3D;convert.base64-encode&#x2F;resource将数据转换为base64编码来读取数据</p><p>3.&#x3D;index.php读取的文件</p><h3 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h3><p>读取上级目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=.../.../a.txt</span><br></pre></td></tr></table></figure><p>读取其他的目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=F：\b.txt</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> web basic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> basic </tag>
             
         </tags>
       
