@@ -229,31 +229,6 @@
     
     
     <entry>
-      <title>php命令注入及其实例</title>
-      <link href="/2023/11/20/day5/"/>
-      <url>/2023/11/20/day5/</url>
-      
-        <content type="html"><![CDATA[<h1 id="php注入概述"><a href="#php注入概述" class="headerlink" title="php注入概述"></a>php注入概述</h1><p>rce概念：remote command&#x2F;code execute，远程命令&#x2F;代码执行。</p><p>php代码执行：在web中，php代码执行是指应用程序过滤不严，用户可通过http请求将代码注入到应用中执行</p><p>php代码注入与sql注入比较：</p><p>注入的思想类似，均是构造语句绕过服务器的过滤去执行。</p><p>区别在于sql注入是将语句注入到数据库中执行，而php代码执行是可以将代码注入到应用中，最终由服务器运行。</p><p>php代码注入的条件：</p><p>1.程序中含有可以执行php代码的函数或者语言结构</p><p>2.传入该函数或者语言结构的参数是可以由客户端控制的（可以直接修改或者造成影响）且应用过滤不严。</p><p>危害：</p><p>这样的漏洞如果没有特殊的过滤，相当于一个web后门的存在，攻击者可以执行漏洞继承web用户权限，执行任意代码。如果服务器没有正确配置或者web用户权限比较高的话，还可以读写靶机服务器任意文件的内容，甚至控制整个网站或者服务器。</p><h1 id="相关的函数或语言结构"><a href="#相关的函数或语言结构" class="headerlink" title="相关的函数或语言结构"></a>相关的函数或语言结构</h1><h2 id="1-eval-函数"><a href="#1-eval-函数" class="headerlink" title="1.eval()函数"></a>1.eval()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：<code>?code=phpinfo();</code><br>②以语句块方式提交变量：<code>?code=&#123;phpinfo();&#125;</code><br>③以多语句方式提交参数：<code>?code=1;phpinfo();</code></p><p>payload:?code&#x3D;</p><h2 id="2-assert-函数"><a href="#2-assert-函数" class="headerlink" title="2.assert()函数"></a>2.assert()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。如果它的条件返回错误，则终止程序执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">assert($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;?code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>普通方式提交变量：<code>?code=phpinfo()</code>或者<code>?code=phpinfo();</code><br>与eval()函数有别的是，该函数不能执行传入语句块或多语句作为参数。</p><h2 id="3-preg-replace-函数"><a href="#3-preg-replace-函数" class="headerlink" title="3.preg_replace()函数"></a>3.preg_replace()函数</h2><p>作用：该函数用于对字符串进行正则处理。</p><p>解析：preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个&#x2F;之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php @preg_replace(&quot;/abcd/e&quot;,$_POST[&#x27;hacker&#x27;],&quot;abcdefg&quot;); ?&gt;</span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：?code&#x3D;[phpinfo();]，[]是由于preg_replace的第一个参数有分号。<br>②以语句块方式提交变量：?code&#x3D;{[phpinfo();]}<br>③以多语句方式提交参数：?code&#x3D;1;[phpinfo();]</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web php </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> php </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>web day3</title>
       <link href="/2023/11/20/day4/"/>
       <url>/2023/11/20/day4/</url>
@@ -271,6 +246,31 @@
         <tags>
             
             <tag> basic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>php命令注入及其实例</title>
+      <link href="/2023/11/20/day5/"/>
+      <url>/2023/11/20/day5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="php注入概述"><a href="#php注入概述" class="headerlink" title="php注入概述"></a>php注入概述</h1><p>rce概念：remote command&#x2F;code execute，远程命令&#x2F;代码执行。</p><p>php代码执行：在web中，php代码执行是指应用程序过滤不严，用户可通过http请求将代码注入到应用中执行</p><p>php代码注入与sql注入比较：</p><p>注入的思想类似，均是构造语句绕过服务器的过滤去执行。</p><p>区别在于sql注入是将语句注入到数据库中执行，而php代码执行是可以将代码注入到应用中，最终由服务器运行。</p><p>php代码注入的条件：</p><p>1.程序中含有可以执行php代码的函数或者语言结构</p><p>2.传入该函数或者语言结构的参数是可以由客户端控制的（可以直接修改或者造成影响）且应用过滤不严。</p><p>危害：</p><p>这样的漏洞如果没有特殊的过滤，相当于一个web后门的存在，攻击者可以执行漏洞继承web用户权限，执行任意代码。如果服务器没有正确配置或者web用户权限比较高的话，还可以读写靶机服务器任意文件的内容，甚至控制整个网站或者服务器。</p><h1 id="相关的函数或语言结构"><a href="#相关的函数或语言结构" class="headerlink" title="相关的函数或语言结构"></a>相关的函数或语言结构</h1><h2 id="1-eval-函数"><a href="#1-eval-函数" class="headerlink" title="1.eval()函数"></a>1.eval()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">eval($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：<code>?code=phpinfo();</code><br>②以语句块方式提交变量：<code>?code=&#123;phpinfo();&#125;</code><br>③以多语句方式提交参数：<code>?code=1;phpinfo();</code></p><p>payload:?code&#x3D;</p><h2 id="2-assert-函数"><a href="#2-assert-函数" class="headerlink" title="2.assert()函数"></a>2.assert()函数</h2><p>作用：该函数的作用是将字符串作为PHP代码执行。如果它的条件返回错误，则终止程序执行。</p><p>例：</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">if (isset($_GET[&#x27;code&#x27;]))&#123;</span><br><span class="line">$code=$_GET[&#x27;code&#x27;];</span><br><span class="line">assert($code);</span><br><span class="line">&#125;else&#123;</span><br><span class="line">echo &quot;Please submit code!&lt;br &gt;?code=phpinfo();&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>普通方式提交变量：<code>?code=phpinfo()</code>或者<code>?code=phpinfo();</code><br>与eval()函数有别的是，该函数不能执行传入语句块或多语句作为参数。</p><h2 id="3-preg-replace-函数"><a href="#3-preg-replace-函数" class="headerlink" title="3.preg_replace()函数"></a>3.preg_replace()函数</h2><p>作用：该函数用于对字符串进行正则处理。</p><p>解析：preg_replace 函数一个参数是一个正则表达式，按照 php的格式，表达式在两个&#x2F;之间，如果在表达式末尾加上一个 e，则第二个参数就会被当做 php代码执行</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php @preg_replace(&quot;/abcd/e&quot;,$_POST[&#x27;hacker&#x27;],&quot;abcdefg&quot;); ?&gt;</span><br></pre></td></tr></table></figure><p>通过浏览器访问上述函数所在网页时，可以通过传递参数该code来执行PHP探针。主要方式有以下几种：<br>①普通方式提交变量：?code&#x3D;[phpinfo();]，[]是由于preg_replace的第一个参数有分号。<br>②以语句块方式提交变量：?code&#x3D;{[phpinfo();]}<br>③以多语句方式提交参数：?code&#x3D;1;[phpinfo();]</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
             
         </tags>
       
