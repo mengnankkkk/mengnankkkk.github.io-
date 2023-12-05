@@ -154,31 +154,6 @@
     
     
     <entry>
-      <title>xss攻击基础了解</title>
-      <link href="/2023/11/23/day7/"/>
-      <url>/2023/11/23/day7/</url>
-      
-        <content type="html"><![CDATA[<h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><h2 id="XSS的了解"><a href="#XSS的了解" class="headerlink" title="XSS的了解"></a>XSS的了解</h2><p>跨站脚本攻击（Cross-site scripting，XSS）是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码。若受害者运行这些恶意代码，攻击者就可以突破网站的访问限制并冒充受害者。根据开放式 Web 应用安全项目（OWASP），XSS 在 2017 年被认为 <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">7 种最常见的 Web 应用程序漏洞之一</a>。</p><p>如果 Web 应用程序没有部署足够的安全验证，那么，这些攻击很容易成功。浏览器无法探测到这些恶意脚本是不可信的，所以，这些脚本可以任意读取 cookie，session tokens，或者其他敏感的网站信息，或者让恶意脚本重写<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a>内容。</p><p>在以下 2 种情况下，容易发生 XSS 攻击：</p><ol><li><p>数据从一个不可靠的链接进入到一个 Web 应用程序。</p></li><li><p>没有过滤掉恶意代码的动态内容被发送给 Web 用户。</p><p>恶意内容一般包括 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript">JavaScript</a>，但是，有时候也会包括 HTML，FLASH 或是其他浏览器可执行的代码。XSS 攻击的形式千差万别，但他们通常都会：将 cookies 或其他隐私信息发送给攻击者，将受害者重定向到由攻击者控制的网页，或是经由恶意网站在受害者的机器上进行其他恶意操作。</p><p>XSS 攻击可以分为 3 类：存储型（持久型）、反射型（非持久型）、DOM 型。</p><ul><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%AD%98%E5%82%A8%E5%9E%8B_xss"><strong>存储型 XSS</strong></a></p><p>注入型脚本永久存储在目标服务器上。当浏览器请求数据时，脚本从服务器上传回并执行。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%8F%8D%E5%B0%84%E5%9E%8B_xss"><strong>反射型 XSS</strong></a></p><p>当用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。Web 服务器将注入脚本，比如一个错误信息，搜索结果等 返回到用户的浏览器上。由于浏览器认为这个响应来自”可信任”的服务器，所以会执行这段脚本。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%9F%BA%E4%BA%8E_dom_%E7%9A%84_xss"><strong>基于 DOM 的 XSS</strong></a></p><p>通过修改原始的客户端代码，受害者浏览器的 DOM 环境改变，导致有效载荷的执行。也就是说，页面本身并没有变化，但由于 DOM 环境被恶意修改，有客户端代码被包含进了页面，并且意外执行。</p></li></ul></li></ol><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>XSS和SQLI、RCE本质上都是注入类漏洞，核心要义都是构造payload逃逸程序原有的处理逻辑进而欺骗目标系统执行恶意代码。</p><p>XSS将恶意代码注入到网页中，使用户加载并执行攻击者恶意制造的网页程序。恶意代码通常是JavaScript、Java组件，VBScript，ActiveX，Flash或者就是原生的HTML。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> web xss </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> host </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>CTF中命令执行绕过方法</title>
       <link href="/2023/11/23/day6/"/>
       <url>/2023/11/23/day6/</url>
@@ -204,11 +179,61 @@
     
     
     <entry>
+      <title>xss攻击基础了解</title>
+      <link href="/2023/11/23/day7/"/>
+      <url>/2023/11/23/day7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="XSS攻击"><a href="#XSS攻击" class="headerlink" title="XSS攻击"></a>XSS攻击</h1><h2 id="XSS的了解"><a href="#XSS的了解" class="headerlink" title="XSS的了解"></a>XSS的了解</h2><p>跨站脚本攻击（Cross-site scripting，XSS）是一种安全漏洞，攻击者可以利用这种漏洞在网站上注入恶意的客户端代码。若受害者运行这些恶意代码，攻击者就可以突破网站的访问限制并冒充受害者。根据开放式 Web 应用安全项目（OWASP），XSS 在 2017 年被认为 <a href="https://owasp.org/www-project-top-ten/OWASP_Top_Ten_2017/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">7 种最常见的 Web 应用程序漏洞之一</a>。</p><p>如果 Web 应用程序没有部署足够的安全验证，那么，这些攻击很容易成功。浏览器无法探测到这些恶意脚本是不可信的，所以，这些脚本可以任意读取 cookie，session tokens，或者其他敏感的网站信息，或者让恶意脚本重写<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/HTML">HTML</a>内容。</p><p>在以下 2 种情况下，容易发生 XSS 攻击：</p><ol><li><p>数据从一个不可靠的链接进入到一个 Web 应用程序。</p></li><li><p>没有过滤掉恶意代码的动态内容被发送给 Web 用户。</p><p>恶意内容一般包括 <a href="https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript">JavaScript</a>，但是，有时候也会包括 HTML，FLASH 或是其他浏览器可执行的代码。XSS 攻击的形式千差万别，但他们通常都会：将 cookies 或其他隐私信息发送给攻击者，将受害者重定向到由攻击者控制的网页，或是经由恶意网站在受害者的机器上进行其他恶意操作。</p><p>XSS 攻击可以分为 3 类：存储型（持久型）、反射型（非持久型）、DOM 型。</p><ul><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%AD%98%E5%82%A8%E5%9E%8B_xss"><strong>存储型 XSS</strong></a></p><p>注入型脚本永久存储在目标服务器上。当浏览器请求数据时，脚本从服务器上传回并执行。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%8F%8D%E5%B0%84%E5%9E%8B_xss"><strong>反射型 XSS</strong></a></p><p>当用户点击一个恶意链接，或者提交一个表单，或者进入一个恶意网站时，注入脚本进入被攻击者的网站。Web 服务器将注入脚本，比如一个错误信息，搜索结果等 返回到用户的浏览器上。由于浏览器认为这个响应来自”可信任”的服务器，所以会执行这段脚本。</p></li><li><p><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting#%E5%9F%BA%E4%BA%8E_dom_%E7%9A%84_xss"><strong>基于 DOM 的 XSS</strong></a></p><p>通过修改原始的客户端代码，受害者浏览器的 DOM 环境改变，导致有效载荷的执行。也就是说，页面本身并没有变化，但由于 DOM 环境被恶意修改，有客户端代码被包含进了页面，并且意外执行。</p></li></ul></li></ol><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>XSS和SQLI、RCE本质上都是注入类漏洞，核心要义都是构造payload逃逸程序原有的处理逻辑进而欺骗目标系统执行恶意代码。</p><p>XSS将恶意代码注入到网页中，使用户加载并执行攻击者恶意制造的网页程序。恶意代码通常是JavaScript、Java组件，VBScript，ActiveX，Flash或者就是原生的HTML。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web xss </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> host </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>web day2</title>
       <link href="/2023/11/20/day3/"/>
       <url>/2023/11/20/day3/</url>
       
         <content type="html"><![CDATA[<h1 id="http协议与https协议"><a href="#http协议与https协议" class="headerlink" title="http协议与https协议"></a>http协议与https协议</h1><h2 id="http简介"><a href="#http简介" class="headerlink" title="http简介"></a>http简介</h2><p>1.HTTP 协议是 Hyper Text Transfer Protocol（超文本传输协议）的缩写，是用于从万维网（ WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议.</p><p>2.http协议是基于tcp&#x2F;ip协议来传输数据（html文件、图片文件、查询结果等）</p><p>3.http的url是由http:&#x2F;&#x2F;起始，默认使用端口为80</p><h2 id="http工作原理"><a href="#http工作原理" class="headerlink" title="http工作原理"></a>http工作原理</h2><p>1.http协议工作于客户端-服务器架构上</p><p>2.浏览器作为http客户端通过url向http服务端即web服务器发送所有的请求。</p><p>3.web服务器接受到请求后，向客户端发送响应信息</p><p>4.http的默认端口号为80，但可以改为其他的端口</p><p><img src="https://www.runoob.com/wp-content/uploads/2013/11/cgiarch.gif" alt="cgiarch"></p><p>http协议的工作原理示意图</p><h1 id="https简介"><a href="#https简介" class="headerlink" title="https简介"></a>https简介</h1><p>https经由http进行通信，但是利用ssl&#x2F;tls来加密数据包，https的开发的主要目的是提供对网站服务器的身份认证，保护交换资料的隐私和完整性。</p><p>https的url是由https:&#x2F;&#x2F;起始，默认端口为443</p><h2 id="https的作用"><a href="#https的作用" class="headerlink" title="https的作用"></a>https的作用</h2><p>信任的情况：</p><p>与一个网站之间的 HTTPS 连线仅在这些情况下可被信任：</p><ul><li>浏览器正确地实现了 HTTPS 且操作系统中安装了正确且受信任的证书颁发机构；</li><li>证书颁发机构仅信任合法的网站；</li><li>被访问的网站提供了一个有效的证书，也就是说它是一个由操作系统信任的证书颁发机构签发的（大部分浏览器会对无效的证书发出警告）；（可以人为的添加证书，如bp的使用则需要人为的给浏览器添加证书）</li><li>该证书正确地验证了被访问的网站（例如，访问 <a href="https://www.runoob.com/">https://www.runoob.com</a> 时收到了签发给 <a href="http://www.runoob.com/">www.runoob.com</a> 而不是其它域名的证书）；</li><li>此协议的加密层（SSL&#x2F;TLS）能够有效地提供认证和高强度的加密。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> web basic </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> basic </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web day3</title>
+      <link href="/2023/11/20/day4/"/>
+      <url>/2023/11/20/day4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="web基础知识"><a href="#web基础知识" class="headerlink" title="web基础知识"></a>web基础知识</h1><h2 id="php文件有以下几种备份的格式"><a href="#php文件有以下几种备份的格式" class="headerlink" title="php文件有以下几种备份的格式:"></a>php文件有以下几种备份的格式:</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git .svn .swp .bak .bash-history</span><br></pre></td></tr></table></figure><p>类如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php.git</span><br></pre></td></tr></table></figure><h2 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h2><p>robots协议规定了哪些东西可以抓取，哪些东西不能够抓取。robots.txt是一个文本文件也是一个协议。其可以在搜索引擎中访问网站中要查看的第一个文件。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie是主机访问web服务器由服务器创建的，将信息储存在用户计算机上的文件，一般用户习惯使用cookies</p><p>cookie的使用：</p><p>1..判断用户是否已经登录网站</p><p>2.购物车网站用户跳转保存在其中的数据</p><p>3.等等等</p><h2 id="php对于文件的读取"><a href="#php对于文件的读取" class="headerlink" title="php对于文件的读取"></a>php对于文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure><h3 id="组成解析"><a href="#组成解析" class="headerlink" title="组成解析"></a>组成解析</h3><p>1.php:&#x2F;&#x2F;filter&#x2F;可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p><p>2.read&#x3D;convert.base64-encode&#x2F;resource将数据转换为base64编码来读取数据</p><p>3.&#x3D;index.php读取的文件</p><h3 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h3><p>读取上级目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=.../.../a.txt</span><br></pre></td></tr></table></figure><p>读取其他的目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=F：\b.txt</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -246,31 +271,6 @@
         <tags>
             
             <tag> php </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>web day3</title>
-      <link href="/2023/11/20/day4/"/>
-      <url>/2023/11/20/day4/</url>
-      
-        <content type="html"><![CDATA[<h1 id="web基础知识"><a href="#web基础知识" class="headerlink" title="web基础知识"></a>web基础知识</h1><h2 id="php文件有以下几种备份的格式"><a href="#php文件有以下几种备份的格式" class="headerlink" title="php文件有以下几种备份的格式:"></a>php文件有以下几种备份的格式:</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.git .svn .swp .bak .bash-history</span><br></pre></td></tr></table></figure><p>类如</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index.php.git</span><br></pre></td></tr></table></figure><h2 id="robots协议"><a href="#robots协议" class="headerlink" title="robots协议"></a>robots协议</h2><p>robots协议规定了哪些东西可以抓取，哪些东西不能够抓取。robots.txt是一个文本文件也是一个协议。其可以在搜索引擎中访问网站中要查看的第一个文件。</p><h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie是主机访问web服务器由服务器创建的，将信息储存在用户计算机上的文件，一般用户习惯使用cookies</p><p>cookie的使用：</p><p>1..判断用户是否已经登录网站</p><p>2.购物车网站用户跳转保存在其中的数据</p><p>3.等等等</p><h2 id="php对于文件的读取"><a href="#php对于文件的读取" class="headerlink" title="php对于文件的读取"></a>php对于文件的读取</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=index.php</span><br></pre></td></tr></table></figure><h3 id="组成解析"><a href="#组成解析" class="headerlink" title="组成解析"></a>组成解析</h3><p>1.php:&#x2F;&#x2F;filter&#x2F;可以作为一个中间流来处理其他流，可以进行任意文件的读取。</p><p>2.read&#x3D;convert.base64-encode&#x2F;resource将数据转换为base64编码来读取数据</p><p>3.&#x3D;index.php读取的文件</p><h3 id="添加："><a href="#添加：" class="headerlink" title="添加："></a>添加：</h3><p>读取上级目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=.../.../a.txt</span><br></pre></td></tr></table></figure><p>读取其他的目录文件</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">php://filter/read=convert.base64-encode/resource=F：\b.txt</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> web basic </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> basic </tag>
             
         </tags>
       
