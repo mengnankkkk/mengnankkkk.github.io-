@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>C语言期末复习3</title>
+      <link href="/2023/12/18/dayc3/"/>
+      <url>/2023/12/18/dayc3/</url>
+      
+        <content type="html"><![CDATA[<h1 id="zzzzzz"><a href="#zzzzzz" class="headerlink" title="zzzzzz~"></a>zzzzzz~</h1><h1 id="某年某月某日"><a href="#某年某月某日" class="headerlink" title="某年某月某日"></a>某年某月某日</h1><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> year,month,day;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d&quot;</span>,&amp;year,&amp;month);</span><br><span class="line">    <span class="keyword">switch</span>(month)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">case</span> <span class="number">3</span>: <span class="keyword">case</span> <span class="number">5</span>: <span class="keyword">case</span> <span class="number">7</span>: <span class="keyword">case</span> <span class="number">8</span>: <span class="keyword">case</span> <span class="number">10</span>: <span class="keyword">case</span> <span class="number">12</span>:</span><br><span class="line">            day=<span class="number">31</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">4</span>: <span class="keyword">case</span> <span class="number">6</span>: <span class="keyword">case</span> <span class="number">9</span>: <span class="keyword">case</span> <span class="number">11</span>:</span><br><span class="line">            day=<span class="number">30</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="number">2</span>: day=(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>||year%<span class="number">400</span>==<span class="number">0</span>)?<span class="number">29</span>:<span class="number">28</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d年%d月有%d天&quot;</span>,year,month,day);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> c </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言期末复习2</title>
       <link href="/2023/12/04/dayc2/"/>
       <url>/2023/12/04/dayc2/</url>
